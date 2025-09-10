@@ -19,16 +19,25 @@ public class PizzaManiaApiGatewayApplication {
         return builder.routes()
 
                 // ----------------- customer-service -----------------
-                // Pizza Service Route
+                // Customer Service Route
                 .route(r -> r.path("/api/v1/customers/**")
                         .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
                         .uri("http://localhost:8081"))
 
                 // ----------------- admin-service -----------------
-                // Order Service Route
+                // Admin Service Route
                 .route(r -> r.path("/api/v1/admins/**")
                         .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
                         .uri("http://localhost:8081"))
+                // ----------------- product-service -----------------
+                .route(r -> r.path("/api/v1/products/**")
+                        .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
+                        .uri("http://localhost:8081"))
+
+                // ----------------- notification-service -----------------
+                .route(r -> r.path("/api/v1/notifications/**")
+                        .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
+                        .uri("http://localhost:3000"))
 
                 .build();
     }
