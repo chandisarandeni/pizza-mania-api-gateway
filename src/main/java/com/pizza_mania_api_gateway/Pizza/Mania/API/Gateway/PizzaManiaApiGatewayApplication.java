@@ -39,6 +39,11 @@ public class PizzaManiaApiGatewayApplication {
                         .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
                         .uri("http://localhost:8081"))
 
+                //--------------- order-items-------------------------
+                .route(r -> r.path("/api/v1/orderitems/**")
+                        .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
+                        .uri("http://localhost:8081"))
+
                 // ----------------- notification-service -----------------
                 .route(r -> r.path("/api/v1/notifications/**")
                         .filters(f -> f.addResponseHeader("X-Response-Header", "PizzaManiaApiGateway"))
